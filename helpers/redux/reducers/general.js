@@ -12,10 +12,10 @@ export const generalSlice = createSlice({
   initialState,
   reducers: {
     setTextSearch: (state, action)=>{
-      state.typedText = [...state.typedText, action.payload]
+      state.typedText = [action.payload, ...state.typedText]
     },
     setResults: (state, action)=>{
-      state.searchResults = [...state.searchResults, action.payload]
+      state.searchResults = [action.payload, ...state.searchResults]
     },
     resetGeneral: (state)=>{
       Object.assign(state, initialState)

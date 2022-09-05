@@ -1,12 +1,14 @@
 import { Button, Paragraph, Dialog, Portal, Provider, List } from 'react-native-paper';
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import { LEFT_OPT } from '../../helpers/Constants';
+import { reverse } from 'lodash';
 
 const CustomModal = forwardRef((props, ref) => {
   const [statusVisible, setStatus] = useState({});
 
   useImperativeHandle(ref, () => {
     return {
-      show: (data) => setStatus({ data: data, status: true }),
+      show: (data, type) => setStatus({ data: data, status: true, type: type }),
       hide: () => setStatus({ status: false }),
     };
   });
@@ -17,7 +19,7 @@ const CustomModal = forwardRef((props, ref) => {
         <Dialog.Title>Alert</Dialog.Title>
         <Dialog.Content>
           <List.AccordionGroup>
-            <List.Accordion title="Accordion 1" id="1">
+            <List.Accordion title={statusVisible.type==LEFT_OPT? "Result" : "Typed Text"} id="1">
               {
                 statusVisible?.data?.map((val, index) => {
                   return <List.Item title={val} />

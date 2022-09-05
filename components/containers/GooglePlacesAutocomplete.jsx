@@ -147,7 +147,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
     if (navigator?.geolocation) {
       return true;
     } else {
-      console.warn(
+      console.log(
         'If you are using React Native v0.60.0+ you must follow these instructions to enable currentLocation: https://git.io/Jf4AR',
       );
       return false;
@@ -161,7 +161,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
 
   const supportedPlatform = () => {
     if (Platform.OS === 'web' && !props.requestUrl) {
-      console.warn(
+      console.log(
         'This library cannot be used for the web unless you specify the requestUrl prop. See https://git.io/JflFv for more for details.',
       );
       return false;
@@ -263,7 +263,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
             }
 
             if (!props.onNotFound) {
-              console.warn(
+              console.log(
                 'google places autocomplete: ' + responseJSON.status,
               );
             } else {
@@ -274,7 +274,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
           _disableRowLoaders();
 
           if (!props.onFail) {
-            console.warn(
+            console.log(
               'google places autocomplete: request could not be completed or has been aborted',
             );
           } else {
@@ -420,7 +420,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
           }
           if (typeof responseJSON.error_message !== 'undefined') {
             if (!props.onFail)
-              console.warn(
+              console.log(
                 'google places autocomplete: ' + responseJSON.error_message,
               );
             else {
@@ -493,7 +493,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
           }
           if (typeof responseJSON.error_message !== 'undefined') {
             if (!props.onFail)
-              console.warn(
+              console.log(
                 'google places autocomplete: ' + responseJSON.error_message,
               );
             else {
@@ -507,7 +507,6 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
 
       if (props.preProcess) {
         setStateText(props.preProcess(text));
-        console.log("apa iniii" + stateText);
       }
 
       request.open(
@@ -870,7 +869,7 @@ GooglePlacesAutocomplete.defaultProps = {
   onFail: () => { },
   onNotFound: () => { },
   onPress: () => { },
-  onTimeout: () => console.warn('google places autocomplete: request timeout'),
+  onTimeout: () => console.log('google places autocomplete: request timeout'),
   placeholder: '',
   predefinedPlaces: [],
   predefinedPlacesAlwaysVisible: false,

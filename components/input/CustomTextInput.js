@@ -14,7 +14,7 @@ const CustomTextInput = forwardRef((propsX, ref) => {
                 width: '100%'
             }}
             leading={props => 
-            <IconButton onPress={() => propsX.userProps?.clickLeftButton(LEFT_OPT)} icon={props => <Icon name="account" {...props} />} 
+            <IconButton onPress={() => propsX.userProps?.clickLeftButton(LEFT_OPT)} icon={props => <Icon name="book" {...props} />} 
             {...props} />}
             trailing={props => (
                 <IconButton onPress={() => propsX.userProps?.clickLeftButton(RIGHT_OPT)} icon={props => <Icon name="eye" {...props} />} 

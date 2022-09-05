@@ -25,11 +25,11 @@ const MapContainer = () => {
             timeout: 15000,
         })
             .then(location => {
-                console.warn(location);
+                console.log(location);
             })
             .catch(error => {
                 const { code, message } = error;
-                console.log("erroenya apa dahcode", message);
+                console.log("error", message);
             })
         // getLocation().then(
         //     (data) => {

@@ -15,9 +15,9 @@ const MapInput = (props) => {
 
     function manageClickButton(type) {
         if (type == LEFT_OPT) {
-            modalRef.current.show(_textSearchs);
+            modalRef.current.show(_searchResults, type);
         } else {
-            modalRef.current.show(_searchResults);
+            modalRef.current.show(_textSearchs, type);
         }
     }
 
@@ -28,7 +28,7 @@ const MapInput = (props) => {
                 minLength={2} // minimum length of text to search
                 autoFocus={true}
                 returnKeyType={'search'} // Can be left out for default return key 
-                listViewDisplayed={false}    // true/false/undefined
+                listViewDisplayed={true}    // true/false/undefined
                 fetchDetails={true}
                 onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
                     props.notifyChange(details.geometry.location);
