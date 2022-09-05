@@ -7,3 +7,5 @@ How to Use :
 3. expo start
 
 Technology used : React native, React native paper + material, redux
+
+Note : 3 digits inside API_KEY already changed. Only the tester should know the right key. or just generate new key instead
