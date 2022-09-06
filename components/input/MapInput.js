@@ -28,10 +28,12 @@ const MapInput = (props) => {
                 minLength={2} // minimum length of text to search
                 autoFocus={true}
                 returnKeyType={'search'} // Can be left out for default return key 
-                listViewDisplayed={true}    // true/false/undefined
+                listViewDisplayed={'auto'}    // true/false/undefined
                 fetchDetails={true}
-                onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
+                onPress={(data, details = null) => // 'details' is provided when fetchDetails = true
+                    {
                     props.notifyChange(details.geometry.location);
+                    
                 }
                 }
                 query={{

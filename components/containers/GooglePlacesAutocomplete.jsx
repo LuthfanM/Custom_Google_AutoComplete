@@ -50,7 +50,8 @@ const defaultStyles = {
     borderTopWidth: 0.5,
   },
   powered: {},
-  listView: {},
+  listView: {
+  },
   row: {
     backgroundColor: '#FFFFFF',
     padding: 13,
@@ -253,10 +254,8 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
             delete rowData.isLoading;
             props.onPress(rowData, details);
             dispatch(setResults(rowData?.description))
-            // }
           } else {
             _disableRowLoaders();
-            alert("masuk sini")
             if (props.autoFillOnNotFound) {
               setStateText(_renderDescription(rowData));
               delete rowData.isLoading;
@@ -299,14 +298,12 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
       request.send();
     } else if (rowData.isCurrentLocation === true) {
       // display loader
-      alert("masuk sini 2")
       _enableRowLoader(rowData);
       setStateText(_renderDescription(rowData));
 
       delete rowData.isLoading;
       getCurrentLocation();
     } else {
-      alert("masuk sini 3")
       setStateText(_renderDescription(rowData));
 
       _onBlur();
@@ -713,27 +710,32 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
       listViewDisplayed === true
     ) {
       return (
-        <FlatList
-          scrollEnabled={!props.disableScroll}
-          style={[
-            props.suppressDefaultStyles ? {} : defaultStyles.listView,
-            props.styles.listView,
-          ]}
-          data={dataSource}
-          keyExtractor={keyGenerator}
-          extraData={[dataSource, props]}
-          ItemSeparatorComponent={_renderSeparator}
-          renderItem={({ item }) => _renderRow(item)}
-          ListEmptyComponent={
-            stateText.length > props.minLength && props.listEmptyComponent
-          }
-          ListHeaderComponent={
-            props.renderHeaderComponent &&
-            props.renderHeaderComponent(stateText)
-          }
-          ListFooterComponent={_renderPoweredLogo}
-          {...props}
-        />
+        <View style={{width: '100%', display: 'flex', alignContent: 'center', alignSelf: 'center', height: 200}}>
+          <FlatList
+            scrollEnabled={!props.disableScroll}
+            style={{
+              // props.suppressDefaultStyles ? {} : defaultStyles.listView,
+              // props.styles.listView,
+              height: '100%',
+              backgroundColor: 'white',
+              alignSelf: 'center'
+            }}
+            data={dataSource}
+            keyExtractor={keyGenerator}
+            extraData={[dataSource, props]}
+            ItemSeparatorComponent={_renderSeparator}
+            renderItem={({ item }) => _renderRow(item)}
+            ListEmptyComponent={
+              stateText.length > props.minLength && props.listEmptyComponent
+            }
+            ListHeaderComponent={
+              props.renderHeaderComponent &&
+              props.renderHeaderComponent(stateText)
+            }
+            ListFooterComponent={_renderPoweredLogo}
+            {...props}
+          />
+        </View>
       );
     }
 

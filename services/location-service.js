@@ -1,4 +1,5 @@
 import Geocoder from 'react-native-geocoding';
+import Geolocation from 'react-native-geolocation-service';
 
 export const getLocation = () => {
     return new Promise(
@@ -7,6 +8,19 @@ export const getLocation = () => {
                 (data) => resolve(data.coords),
                 (err) => reject(err)
             );
+        }
+    );
+}
+
+export const getCurrentLocation = () => {
+    return new Promise(
+        (resolve, reject) => {
+            Geolocation.getCurrentPosition((position))
+                .then(json => {
+                    const addressComponent = json.results[0].address_components[0];
+                    resolve(addressComponent);
+                })
+                .catch(error => reject(error));
         }
     );
 }
