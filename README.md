@@ -8,6 +8,8 @@ How to Configurate the project :
 4. Change api key in key android:value => <meta-data
     android:name="com.google.android.maps.v2.API_KEY" android:value="API_KEY" ... />
 5. Run in android by using command "npx react-native run-android"
+6. Run command "npx react-native start" for safety purpose
+7. Reload app 
 
 Technology used : React native, React native paper + material, redux
 
